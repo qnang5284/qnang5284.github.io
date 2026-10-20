@@ -1,0 +1,81 @@
+/**
+ * Corporate palette for the portfolio. Infima reads these variables
+ * for links, the navbar, and the docs sidebar.
+ */
+
+:root {
+  --ifm-color-primary: #1b3a4b;
+  --ifm-color-primary-dark: #183444;
+  --ifm-color-primary-darker: #173141;
+  --ifm-color-primary-darkest: #132836;
+  --ifm-color-primary-light: #1e4053;
+  --ifm-color-primary-lighter: #204356;
+  --ifm-color-primary-lightest: #245069;
+  --ifm-background-color: #f5f7f8;
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-footer-background-color: #122033;
+  --ifm-font-family-base: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --ifm-heading-font-weight: 600;
+  --ifm-navbar-shadow: none;
+  --ifm-global-radius: 2px;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(18, 32, 51, 0.08);
+  --portfolio-border: #d5dee6;
+  --portfolio-ink: #14202b;
+  --portfolio-muted: #4d5c68;
+  --portfolio-surface: #ffffff;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #8fb4c9;
+  --ifm-color-primary-dark: #7aa7bf;
+  --ifm-color-primary-darker: #6ea0ba;
+  --ifm-color-primary-darkest: #4e87a5;
+  --ifm-color-primary-light: #a4c1d3;
+  --ifm-color-primary-lighter: #b0cad9;
+  --ifm-color-primary-lightest: #c9dce6;
+  --ifm-background-color: #101820;
+  --ifm-navbar-background-color: #101820;
+  --ifm-footer-background-color: #0b1218;
+  --docusaurus-highlighted-code-line-bg: rgba(143, 180, 201, 0.16);
+  --portfolio-border: #2c3b48;
+  --portfolio-ink: #e7eef3;
+  --portfolio-muted: #a8b6c2;
+  --portfolio-surface: #17222b;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--portfolio-border);
+}
+
+.navbar__title {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.navbar__link {
+  font-weight: 500;
+}
+
+.footer--dark {
+  background-color: var(--ifm-footer-background-color);
+}
+
+.footer__title {
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer__link-item {
+  line-height: 1.7;
+}
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--portfolio-border) !important;
+}
+
+.menu__link {
+  border-radius: 2px;
+}

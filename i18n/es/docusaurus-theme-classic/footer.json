@@ -1,0 +1,30 @@
+{
+  "link.title.Documentation": {
+    "message": "Documentación",
+    "description": "The title of the footer links column with title=Documentation in the footer"
+  },
+  "link.item.label.Homebrewery User Guide": {
+    "message": "Guía de usuario de Homebrewery",
+    "description": "The label of footer link with label=Homebrewery User Guide linking to /docs/homebrewery-user-guide-v2"
+  },
+  "link.item.label.Minis Vault": {
+    "message": "Minis Vault",
+    "description": "The label of footer link with label=Minis Vault linking to /docs/minisvault-api-reference"
+  },
+  "link.title.Connect": {
+    "message": "Contacto",
+    "description": "The title of the footer links column with title=Connect in the footer"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/qnang5284"
+  },
+  "link.item.label.LinkedIn": {
+    "message": "LinkedIn",
+    "description": "The label of footer link with label=LinkedIn linking to https://www.linkedin.com/in/javier-garc%C3%ADa-miranda-a5430a1ab/"
+  },
+  "link.item.label.Scribenode API Reference": {
+    "message": "Referencia de API de Scribenode",
+    "description": "The label of footer link with label=Scribenode API Reference linking to /docs/scribenode-api-reference"
+  }
+}

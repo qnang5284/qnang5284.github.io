@@ -1,0 +1,62 @@
+{
+  "homepage.title": {
+    "message": "Javier García-Miranda",
+    "description": "The homepage main title"
+  },
+  "homepage.tagline": {
+    "message": "Portfolio de redacción técnica y documentación de software",
+    "description": "The homepage subtitle"
+  },
+  "homepage.welcome": {
+    "message": "Bienvenido. Soy un exingeniero de software y artista de cómics especializado en metodologías Docs-as-Code.",
+    "description": "Short welcome on the homepage"
+  },
+  "homepage.kicker": {
+    "message": "Redactor técnico",
+    "description": "Role label above the homepage title"
+  },
+  "homepage.profile.github": {
+    "message": "Repositorios de documentación",
+    "description": "Short description of the GitHub profile link"
+  },
+  "homepage.profile.linkedin": {
+    "message": "Experiencia y trayectoria",
+    "description": "Short description of the LinkedIn profile link"
+  },
+  "homepage.docs.heading": {
+    "message": "Documentación",
+    "description": "Heading for the document list"
+  },
+  "homepage.doc.homebrewery.title": {
+    "message": "Guía de usuario de Homebrewery",
+    "description": "Portfolio document title"
+  },
+  "homepage.doc.homebrewery.summary": {
+    "message": "Guía de usuario para autores que escriben páginas en The Homebrewery.",
+    "description": "Portfolio document summary"
+  },
+  "homepage.doc.minisvault.title": {
+    "message": "Minis Vault",
+    "description": "Portfolio document title"
+  },
+  "homepage.doc.minisvault.summary": {
+    "message": "Referencia de API para las pinturas y miniaturas de un coleccionista.",
+    "description": "Portfolio document summary"
+  },
+  "homepage.doc.scribenode.title": {
+    "message": "Referencia de API de Scribenode",
+    "description": "Portfolio document title"
+  },
+  "homepage.doc.scribenode.summary": {
+    "message": "Manual de referencia de la API del motor de diálogos ScribeNode.",
+    "description": "Portfolio document summary"
+  },
+  "homepage.metaTitle": {
+    "message": "Portfolio de redacción técnica",
+    "description": "The homepage HTML title"
+  },
+  "homepage.metaDescription": {
+    "message": "Portfolio de Javier García-Miranda, exingeniero de software y artista de cómics especializado en metodologías Docs-as-Code.",
+    "description": "The homepage meta description"
+  }
+}

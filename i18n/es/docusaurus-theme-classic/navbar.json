@@ -1,0 +1,30 @@
+{
+  "title": {
+    "message": "Javier García-Miranda",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Javier García-Miranda",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Homebrewery User Guide": {
+    "message": "Guía de usuario de Homebrewery",
+    "description": "Navbar item with label Homebrewery User Guide"
+  },
+  "item.label.Minis Vault": {
+    "message": "Minis Vault",
+    "description": "Navbar item with label Minis Vault"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "item.label.LinkedIn": {
+    "message": "LinkedIn",
+    "description": "Navbar item with label LinkedIn"
+  },
+  "item.label.Scribenode API Reference": {
+    "message": "Referencia de API de Scribenode",
+    "description": "Navbar item with label Scribenode API Reference"
+  }
+}

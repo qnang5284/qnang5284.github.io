@@ -1,0 +1,161 @@
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+const config: Config = {
+  title: 'Javier García-Miranda',
+  tagline: 'Technical Writing & Software Documentation Portfolio',
+  favicon: 'img/favicon.ico',
+
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
+
+  url: 'https://qnang5284.github.io',
+  baseUrl: '/',
+  organizationName: 'qnang5284',
+  projectName: 'qnang5284.github.io',
+  trailingSlash: false,
+
+  onBrokenLinks: 'throw',
+
+  // Even if you don't use internationalization, you can use this field to set
+  // useful metadata like html lang. For example, if your site is Chinese, you
+  // may want to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+      },
+      es: {
+        label: 'Español',
+      },
+    },
+  },
+
+  presets: [
+    [
+      'classic',
+      {
+        docs: {
+          sidebarPath: './sidebars.ts',
+          exclude: [
+            '**/_*.{js,jsx,ts,tsx,md,mdx}',
+            '**/_*/**',
+            '**/*.test.{js,jsx,ts,tsx}',
+            '**/__tests__/**',
+            '**/README.md',
+          ],
+        },
+        blog: {
+          showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
+          // Useful options to enforce blogging best practices
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+        },
+        theme: {
+          customCss: './src/css/custom.css',
+        },
+      } satisfies Preset.Options,
+    ],
+  ],
+
+  themeConfig: {
+    // Replace with your project's social card
+    image: 'img/docusaurus-social-card.jpg',
+    colorMode: {
+      respectPrefersColorScheme: true,
+    },
+    navbar: {
+      title: 'Javier García-Miranda',
+      logo: {
+        alt: 'Javier García-Miranda',
+        src: 'img/logo.svg',
+        srcDark: 'img/logo-dark.svg',
+      },
+      items: [
+        {
+          to: '/docs/homebrewery-user-guide-v2',
+          label: 'Homebrewery User Guide',
+          position: 'left',
+        },
+        {
+          to: '/docs/minisvault-api-reference',
+          label: 'Minis Vault',
+          position: 'left',
+        },
+        {
+          to: '/docs/scribenode-api-reference',
+          label: 'Scribenode API Reference',
+          position: 'left',
+        },
+        {
+          href: 'https://github.com/qnang5284',
+          label: 'GitHub',
+          position: 'right',
+        },
+        {
+          href: 'https://www.linkedin.com/in/javier-garc%C3%ADa-miranda-a5430a1ab/',
+          label: 'LinkedIn',
+          position: 'right',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Documentation',
+          items: [
+            {
+              label: 'Homebrewery User Guide',
+              to: '/docs/homebrewery-user-guide-v2',
+            },
+            {
+              label: 'Minis Vault',
+              to: '/docs/minisvault-api-reference',
+            },
+            {
+              label: 'Scribenode API Reference',
+              to: '/docs/scribenode-api-reference',
+            },
+          ],
+        },
+        {
+          title: 'Connect',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/qnang5284',
+            },
+            {
+              label: 'LinkedIn',
+              href: 'https://www.linkedin.com/in/javier-garc%C3%ADa-miranda-a5430a1ab/',
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} Javier García-Miranda. Built with Docusaurus.`,
+    },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
+  } satisfies Preset.ThemeConfig,
+};
+
+export default config;
