@@ -13,9 +13,6 @@ const sidebars: SidebarsConfig = {
         type: 'doc',
         id: 'docker-quickstart/camunda8-docker-quickstart',
       },
-      customProps: {
-        expandOnlyWhenCurrent: true,
-      },
       items: [
         'docker-quickstart/camunda-8-run-quickstart',
         'docker-quickstart/docker-compose-quickstart',
