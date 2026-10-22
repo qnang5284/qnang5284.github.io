@@ -51,6 +51,14 @@
     "message": "Manual de referencia de la API del motor de diálogos ScribeNode.",
     "description": "Portfolio document summary"
   },
+  "homepage.doc.camunda.title": {
+    "message": "Configuración de Camunda 8",
+    "description": "Portfolio document title"
+  },
+  "homepage.doc.camunda.summary": {
+    "message": "Guía rápida para ejecutar un clúster local de Camunda 8 con Docker Compose.",
+    "description": "Portfolio document summary"
+  },
   "homepage.metaTitle": {
     "message": "Portfolio de redacción técnica",
     "description": "The homepage HTML title"

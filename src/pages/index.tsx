@@ -90,6 +90,23 @@ const portfolioDocs: PortfolioDoc[] = [
       </Translate>
     ),
   },
+  {
+    href: '/docs/docker-quickstart',
+    title: (
+      <Translate
+        id="homepage.doc.camunda.title"
+        description="Portfolio document title">
+        Camunda 8 Setup
+      </Translate>
+    ),
+    summary: (
+      <Translate
+        id="homepage.doc.camunda.summary"
+        description="Portfolio document summary">
+        Quickstart for running a local Camunda 8 cluster with Docker Compose.
+      </Translate>
+    ),
+  },
 ];
 
 function HomepageHeader() {

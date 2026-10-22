@@ -100,6 +100,11 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: '/docs/docker-quickstart/',
+          label: 'Camunda 8 Setup',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/qnang5284',
           label: 'GitHub',
           position: 'right',
@@ -132,6 +137,10 @@ const config: Config = {
             {
               label: 'Scribenode API Reference',
               to: '/docs/scribenode-api-reference',
+            },
+            {
+              label: 'Camunda 8 Setup',
+              to: '/docs/docker-quickstart/',
             },
           ],
         },

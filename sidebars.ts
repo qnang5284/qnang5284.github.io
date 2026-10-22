@@ -5,6 +5,7 @@ const sidebars: SidebarsConfig = {
     'homebrewery-user-guide-v2/homebrewery-user-guide-v2',
     'miniature-inventory-api-docs/minisvault-api-reference',
     'scribenode-engine-docs/scribenode-reference-manual',
+    'docker-quickstart/camunda8-docker-quickstart',
   ],
 };
 
