@@ -101,7 +101,15 @@ On Windows, run:
 
 ## Docker Compose
 
-You need Docker 20.10.16 or later and Compose 2.24.0 or later. Check with `docker compose version`, and use that command rather than `docker-compose`.
+You need Docker 20.10.16 or later and Compose 2.24.0 or later. Check with
+```bash
+docker compose version
+```
+:::info[Beware the missing dashes]
+
+and use that command rather than `docker-compose`. You might need to upgrade Docker Desktop or the Docker Engine Compose plugin. 
+
+:::
 
 Download the Camunda 8 Docker Compose archive from the Camunda Distributions releases and extract the whole folder. Keep `.env`, `configuration/`, and the hidden config directories. A lone Compose file is not enough.
 
