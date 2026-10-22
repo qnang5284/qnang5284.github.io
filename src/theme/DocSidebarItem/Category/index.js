@@ -23,9 +23,18 @@ import {
 import Link from '@docusaurus/Link';
 import {translate} from '@docusaurus/Translate';
 import useIsBrowser from '@docusaurus/useIsBrowser';
-import DocSidebarItems from '@theme/DocSidebarItems';
-import DocSidebarItemLink from '@theme/DocSidebarItem/Link';
 import styles from './styles.module.css';
+
+// Loaded lazily. A top-level import cycles through DocSidebarItems and
+// DocSidebarItem, which makes Rspack throw "factory is undefined".
+function DocSidebarItems(props) {
+  const DocSidebarItemsComponent = require('@theme/DocSidebarItems').default;
+  return <DocSidebarItemsComponent {...props} />;
+}
+function DocSidebarItemLink(props) {
+  const DocSidebarItemLinkComponent = require('@theme/DocSidebarItem/Link').default;
+  return <DocSidebarItemLinkComponent {...props} />;
+}
 // If we navigate to a category and it becomes active, it should automatically
 // expand itself
 function useAutoExpandActiveCategory({
@@ -151,7 +160,6 @@ function DocSidebarItemCategoryCollapsible({
   ...props
 }) {
   const {items, label, collapsible, className, href} = item;
-  const expandOnlyWhenCurrent = item.customProps?.expandOnlyWhenCurrent === true;
   const {
     docs: {
       sidebar: {autoCollapseCategories},
@@ -160,7 +168,7 @@ function DocSidebarItemCategoryCollapsible({
   const hrefWithSSRFallback = useCategoryHrefWithSSRFallback(item);
   const isActive = isActiveSidebarItem(item, activePath);
   const isCurrentPage = isSamePath(href, activePath);
-  const categoryIsOpen = expandOnlyWhenCurrent ? isCurrentPage : isActive;
+  const wasActive = usePrevious(isActive);
   const {collapsed, setCollapsed} = useCollapsible({
     // Active categories are always initialized as expanded. The default
     // (`item.collapsed`) is only used for non-active categories.
@@ -168,7 +176,7 @@ function DocSidebarItemCategoryCollapsible({
       if (!collapsible) {
         return false;
       }
-      return categoryIsOpen ? false : item.collapsed;
+      return isActive ? false : item.collapsed;
     },
   });
   const {expandedItem, setExpandedItem} = useDocSidebarItemsExpandedState();
@@ -178,25 +186,18 @@ function DocSidebarItemCategoryCollapsible({
     setCollapsed(toCollapsed);
   };
   useAutoExpandActiveCategory({
-    isActive: categoryIsOpen,
+    isActive,
     collapsed,
     updateCollapsed,
     activePath,
   });
+  // Stay open on this category and its children. Close it when another doc is selected.
   useEffect(() => {
-    if (!expandOnlyWhenCurrent || !collapsible) {
-      return;
+    if (collapsible && wasActive && !isActive) {
+      setCollapsed(true);
+      setExpandedItem(null);
     }
-    setCollapsed(!isCurrentPage);
-    setExpandedItem(isCurrentPage ? index : null);
-  }, [
-    expandOnlyWhenCurrent,
-    collapsible,
-    isCurrentPage,
-    index,
-    setCollapsed,
-    setExpandedItem,
-  ]);
+  }, [collapsible, wasActive, isActive, setCollapsed, setExpandedItem]);
   useEffect(() => {
     if (
       collapsible &&
@@ -248,8 +249,7 @@ function DocSidebarItemCategoryCollapsible({
           className={clsx(styles.categoryLink, 'menu__link', {
             'menu__link--sublist': collapsible,
             'menu__link--sublist-caret': !href && collapsible,
-            'menu__link--active':
-              expandOnlyWhenCurrent ? isCurrentPage : isActive,
+            'menu__link--active': isActive,
           })}
           onClick={handleItemClick}
           aria-current={isCurrentPage ? 'page' : undefined}
