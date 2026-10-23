@@ -90,24 +90,32 @@ const config: Config = {
       },
       items: [
         {
-          to: '/docs/homebrewery-user-guide-v2',
-          label: 'Homebrewery User Guide',
+          type: 'dropdown',
+          label: 'Documentation',
           position: 'left',
-        },
-        {
-          to: '/docs/minisvault-api-reference',
-          label: 'Minis Vault',
-          position: 'left',
-        },
-        {
-          to: '/docs/scribenode-api-reference',
-          label: 'Scribenode API Reference',
-          position: 'left',
-        },
-        {
-          to: '/docs/docker-quickstart/',
-          label: 'Camunda 8 Setup',
-          position: 'left',
+          className: 'navbar-docs-toggle',
+          items: [
+            {
+              to: '/docs/docker-quickstart/',
+              label: 'Camunda 8 Setup',
+            },
+            {
+              to: '/docs/grafana-loki-quickstart',
+              label: 'Grafana Loki',
+            },
+            {
+              to: '/docs/homebrewery-user-guide-v2',
+              label: 'Homebrewery User Guide',
+            },
+            {
+              to: '/docs/minisvault-api-reference',
+              label: 'Minis Vault',
+            },
+            {
+              to: '/docs/scribenode-api-reference',
+              label: 'Scribenode API Reference',
+            },
+          ],
         },
         {
           href: 'https://github.com/qnang5284',
@@ -132,6 +140,14 @@ const config: Config = {
           title: 'Documentation',
           items: [
             {
+              label: 'Camunda 8 Setup',
+              to: '/docs/docker-quickstart/',
+            },
+            {
+              label: 'Grafana Loki',
+              to: '/docs/grafana-loki-quickstart',
+            },
+            {
               label: 'Homebrewery User Guide',
               to: '/docs/homebrewery-user-guide-v2',
             },
@@ -142,10 +158,6 @@ const config: Config = {
             {
               label: 'Scribenode API Reference',
               to: '/docs/scribenode-api-reference',
-            },
-            {
-              label: 'Camunda 8 Setup',
-              to: '/docs/docker-quickstart/',
             },
           ],
         },

@@ -26,5 +26,9 @@
   "link.item.label.Scribenode API Reference": {
     "message": "Referencia de API de Scribenode",
     "description": "The label of footer link with label=Scribenode API Reference linking to /docs/scribenode-api-reference"
+  },
+  "link.item.label.Grafana Loki": {
+    "message": "Grafana Loki",
+    "description": "The label of footer link with label=Grafana Loki linking to /docs/grafana-loki-quickstart"
   }
 }

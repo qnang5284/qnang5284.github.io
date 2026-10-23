@@ -2,9 +2,6 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   portfolioSidebar: [
-    'homebrewery-user-guide-v2/homebrewery-user-guide-v2',
-    'miniature-inventory-api-docs/minisvault-api-reference',
-    'scribenode-engine-docs/scribenode-reference-manual',
     {
       type: 'category',
       label: 'Camunda 8 Setup',
@@ -18,6 +15,10 @@ const sidebars: SidebarsConfig = {
         'docker-quickstart/docker-compose-quickstart',
       ],
     },
+    'grafana-loki-quickstart/grafana-loki-quickstart',
+    'homebrewery-user-guide-v2/homebrewery-user-guide-v2',
+    'miniature-inventory-api-docs/minisvault-api-reference',
+    'scribenode-engine-docs/scribenode-reference-manual',
   ],
 };
 

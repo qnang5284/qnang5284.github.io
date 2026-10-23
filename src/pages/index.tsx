@@ -40,6 +40,40 @@ type PortfolioDoc = {
 
 const portfolioDocs: PortfolioDoc[] = [
   {
+    href: '/docs/docker-quickstart',
+    title: (
+      <Translate
+        id="homepage.doc.camunda.title"
+        description="Portfolio document title">
+        Camunda 8 Setup
+      </Translate>
+    ),
+    summary: (
+      <Translate
+        id="homepage.doc.camunda.summary"
+        description="Portfolio document summary">
+        Quickstart for running a local Camunda 8 cluster with Docker Compose.
+      </Translate>
+    ),
+  },
+  {
+    href: '/docs/grafana-loki-quickstart',
+    title: (
+      <Translate
+        id="homepage.doc.grafana.title"
+        description="Portfolio document title">
+        Grafana Loki
+      </Translate>
+    ),
+    summary: (
+      <Translate
+        id="homepage.doc.grafana.summary"
+        description="Portfolio document summary">
+        Quickstart for aggregating and querying local logs with Grafana Loki and Promtail.
+      </Translate>
+    ),
+  },
+  {
     href: '/docs/homebrewery-user-guide-v2',
     title: (
       <Translate
@@ -87,23 +121,6 @@ const portfolioDocs: PortfolioDoc[] = [
         id="homepage.doc.scribenode.summary"
         description="Portfolio document summary">
         Reference manual for the ScribeNode dialogue engine API.
-      </Translate>
-    ),
-  },
-  {
-    href: '/docs/docker-quickstart',
-    title: (
-      <Translate
-        id="homepage.doc.camunda.title"
-        description="Portfolio document title">
-        Camunda 8 Setup
-      </Translate>
-    ),
-    summary: (
-      <Translate
-        id="homepage.doc.camunda.summary"
-        description="Portfolio document summary">
-        Quickstart for running a local Camunda 8 cluster with Docker Compose.
       </Translate>
     ),
   },
