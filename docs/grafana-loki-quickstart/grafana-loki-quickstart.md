@@ -17,6 +17,12 @@ This quickstart guides you through deploying Grafana Loki, Promtail, and Grafana
 * **Promtail:** The native shipping agent. It discovers log targets, attaches matching metadata labels, and pushes micro-batches directly to the Loki cluster.
 * **Grafana:** The unified visualization layer. It executes LogQL queries against Loki data streams to build real-time analytical dashboards.
 
+:::info[Check your OS]
+
+This guide assumes you are using Linux.
+
+:::
+
 ---
 
 ## 2. Orchestration Infrastructure Setup
@@ -56,7 +62,7 @@ services:
   grafana:
     image: grafana/grafana:12.4.13
     ports:
-      - "127.0.0.1:3100:3000"
+      - "127.0.0.1:3200:3000"
     volumes:
       - grafana-data:/var/lib/grafana
     depends_on:
@@ -106,13 +112,13 @@ scrape_configs:
 </TabItem>
 </Tabs>
 
-:::info[Beware the Port Collisions]
+:::tip[Beware the Port Collisions]
 
-The Docusaurus local development server and the default Grafana instance both bind to ingress port `3000`. Running them concurrently will cause an allocation failure. To resolve this, this topology maps Grafana to host port `3100`. Access the console at [http://localhost:3100](http://localhost:3100) while keeping your documentation workspace on port `3000`.
+The Docusaurus local development server and the default Grafana core instance both bind to ingress port `3000` by default. Running them concurrently will cause a network socket allocation failure. To resolve this, this topology maps Grafana's external port to host port `3200`. Access the visualization dashboard interface at [http://localhost:3200](http://localhost:3200) while keeping your local documentation workspace cleanly isolated on port `3000`.
 
 :::
 
-:::note Inbound Network Security
+:::warning[Inbound Network Security]
 Loki publishes on host port `3101` (`http://localhost:3101`). Both ingress interfaces are bounded to loopback `127.0.0.1`. Promtail mounts the host's Docker socket read-only to monitor engine events. Ensure this stack runs strictly within controlled local dev zones.
 :::
 
@@ -132,15 +138,17 @@ curl -sS http://localhost:3101/ready
 
 ## 3. Registering the Loki Data Source
 
-1. Navigate to the Grafana control panel at [http://localhost:3100](http://localhost:3100).
+1. Navigate to the Grafana control panel at [http://localhost:3200](http://localhost:3200).
 2. Authenticate using the default credentials: `admin` / `admin`. Update the primary credentials when prompted.
 3. In the left-hand navigation sidebar, click **Connections**, then select **Data sources**.
 4. Click **Add new data source**, and select **Loki** from the analytics catalog.
 5. Configure the HTTP Connection URL parameter exactly to: `http://loki:3100`.
 6. Click **Save & test** to validate the connection lifecycle.
 
-:::warning DNS Ingress Context
+:::caution[DNS Ingress Context]
+
 Do not utilize `http://localhost:3101` from the Grafana settings interface. Inside the isolated container space, `localhost` resolves internally to Grafana itself, rather than the host machine. Setting it to the service alias `http://loki:3100` utilizes Docker's internal DNS routing seamlessly.
+
 :::
 
 ---
@@ -194,5 +202,5 @@ docker rm log-demo
 ---
 
 **Official References & Documentation Standards:**
-* [Grafana Loki Installation Architectures](https://grafana.com)
-* [Promtail Configuration Blocks Reference](https://grafana.com)
+* [Install Loki](https://grafana.com/docs/loki/latest/setup/install/)
+* [Promtail Agent](https://grafana.com/docs/loki/latest/send-data/promtail/)
