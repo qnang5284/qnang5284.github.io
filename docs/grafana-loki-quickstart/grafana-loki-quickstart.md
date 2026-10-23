@@ -4,24 +4,33 @@ title: Centralizing Logs with Grafana Loki & Promtail
 sidebar_label: Grafana Loki
 ---
 
-This quickstart runs Loki, Promtail, and Grafana in Docker Compose, then queries the logs Promtail ships from the local machine.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+This quickstart guides you through deploying Grafana Loki, Promtail, and Grafana utilizing Docker Compose, establishing an automated pipeline to ship and query localized infrastructure logs.
+
+---
 
 ## 1. Core Concepts
 
-Loki is a log aggregation engine. It indexes labels, such as `job` or `container`, and stores the log line compressed beside that index. Elasticsearch indexes the words inside every line. That inverted index is what makes an Elasticsearch logging stack heavier in memory and disk. Loki spends those resources on labels, then scans the matching streams at query time.
+* **Grafana Loki:** A horizontally scalable, highly available, tenant-aware log aggregation engine. Unlike Elasticsearch, Loki only indexes metadata labels (such as `job` or `container`) and leaves the raw log lines compressed, drastically minimizing memory footprint and operational overhead.
+* **Promtail:** The native shipping agent. It discovers log targets, attaches matching metadata labels, and pushes micro-batches directly to the Loki cluster.
+* **Grafana:** The unified visualization layer. It executes LogQL queries against Loki data streams to build real-time analytical dashboards.
 
-Promtail is the shipping agent. It tails files, reads container logs from the Docker engine, attaches labels, and pushes batches to Loki. Grafana does not collect logs. It only queries what Promtail has already sent.
+---
 
-## 2. Docker Compose Infrastructure
+## 2. Orchestration Infrastructure Setup
 
-Create a working directory and add the two files below. The Loki image already contains a single-process config. Promtail needs its own file, because the config shipped in the Promtail image only reads `/var/log` and does not discover containers.
+Create an isolated working directory on your workstation to house the infrastructure manifests:
 
 ```bash
-mkdir loki-quickstart
-cd loki-quickstart
+mkdir loki-quickstart && cd loki-quickstart
 ```
 
-`docker-compose.yaml`:
+Deploying this stack requires two companion configurations. Use the interactive tabs below to examine and provision the ecosystem files in your workspace directory:
+
+<Tabs>
+<TabItem value="compose" label="docker-compose.yaml">
 
 ```yaml
 services:
@@ -59,7 +68,8 @@ volumes:
   grafana-data:
 ```
 
-`promtail-config.yaml`:
+</TabItem>
+<TabItem value="promtail" label="promtail-config.yaml">
 
 ```yaml
 server:
@@ -93,77 +103,79 @@ scrape_configs:
         target_label: stream
 ```
 
+</TabItem>
+</Tabs>
+
 :::info[Beware the Port Collisions]
 
-The Docusaurus development server and Grafana both bind to port 3000 by default. Run them together and the second process fails to listen. Map Grafana to host port 3100 in the Compose file, then open it at [http://localhost:3100](http://localhost:3100). Leave this docs site on port 3000.
+The Docusaurus local development server and the default Grafana instance both bind to ingress port `3000`. Running them concurrently will cause an allocation failure. To resolve this, this topology maps Grafana to host port `3100`. Access the console at [http://localhost:3100](http://localhost:3100) while keeping your documentation workspace on port `3000`.
 
 :::
 
-Loki still listens on port 3100 inside its container. That host port is Grafana in this file, so the Compose file publishes Loki on host port 3101. Promtail and Grafana stay on the Compose network and push or query `http://loki:3100`. From your machine, Loki is [http://localhost:3101](http://localhost:3101). Both published ports are bound to `127.0.0.1`. This local config does not authenticate clients, and the Docker socket mount lets Promtail read every container on the host. Keep the stack on a machine you control.
+:::note Inbound Network Security
+Loki publishes on host port `3101` (`http://localhost:3101`). Both ingress interfaces are bounded to loopback `127.0.0.1`. Promtail mounts the host's Docker socket read-only to monitor engine events. Ensure this stack runs strictly within controlled local dev zones.
+:::
 
-Start it from the directory that holds both files:
+Execute the initialization sequence to spin up the container network in detached mode:
 
 ```bash
 docker compose up -d
-docker compose ps
+```
+
+Verify that the log aggregation engine has stabilized and is actively accepting write streams:
+
+```bash
 curl -sS http://localhost:3101/ready
 ```
 
-`ready` means Loki is accepting writes. The first start downloads the three images.
-
-Stop the stack and keep the stored logs and the Grafana database:
-
-```bash
-docker compose down
-```
-
-Add `-v` only when you intend to delete those volumes.
+---
 
 ## 3. Registering the Loki Data Source
 
-1. Open [http://localhost:3100](http://localhost:3100).
-2. Sign in with `admin` / `admin`. On the first login, Grafana asks you to replace that password. Set one.
-3. In the left menu, open **Connections**, then **Data sources**.
-4. Select **Add new data source**, then **Loki**.
-5. Set **URL** to `http://loki:3100`.
-6. Select **Save & test**.
+1. Navigate to the Grafana control panel at [http://localhost:3100](http://localhost:3100).
+2. Authenticate using the default credentials: `admin` / `admin`. Update the primary credentials when prompted.
+3. In the left-hand navigation sidebar, click **Connections**, then select **Data sources**.
+4. Click **Add new data source**, and select **Loki** from the analytics catalog.
+5. Configure the HTTP Connection URL parameter exactly to: `http://loki:3100`.
+6. Click **Save & test** to validate the connection lifecycle.
 
-Use the Compose service name and Loki's container port. `http://localhost:3101` fails from this screen: inside the Grafana container, `localhost` is Grafana, not your host. A successful test reports that Grafana connected to Loki. If Promtail has not pushed a stream yet, Grafana can connect and still report that it found no labels. Wait a few seconds and run the test again.
+:::warning DNS Ingress Context
+Do not utilize `http://localhost:3101` from the Grafana settings interface. Inside the isolated container space, `localhost` resolves internally to Grafana itself, rather than the host machine. Setting it to the service alias `http://loki:3100` utilizes Docker's internal DNS routing seamlessly.
+:::
+
+---
 
 ## 4. Querying Logs via LogQL
 
-Host files under `/var/log` whose names end in `log` arrive labeled `job="varlogs"`. Write a line so the first query has a match:
+To execute an initial validation smoke test against host system logs, manually inject a sample error entry into your local log architecture:
 
 ```bash
 echo "error: loki quickstart sample" | sudo tee -a /var/log/syslog
 ```
 
-If this host records system logs in `/var/log/messages` rather than `syslog`, the glob `/var/log/*log` will not read that file. Write the sample to a path that ends in `log`, such as `/var/log/syslog`.
-
-1. In the left menu, select **Explore**.
-2. Choose the **Loki** data source.
-3. Select **Code** in the query editor.
-4. Run:
+1. In the primary navigation pane, select **Explore**.
+2. Select the newly provisioned **Loki** data source from the dropdown selector.
+3. Toggle the query input component to **Code** mode.
+4. Execute the following baseline metadata label search:
 
 ```logql
 {job="varlogs"}
 ```
 
-5. Set the time range to the last 15 minutes. The sample line shows up after Promtail's next batch, usually within a few seconds. Select **Run query** again if the stream is still empty.
+5. Adjust the target time window parameter to **Last 15 minutes** and click **Run query**.
 
 :::tip[Pro-Tip: Basic LogQL Filter]
 
-Keep the label selector and drop every line that does not contain the substring. This returns only the error lines from that stream:
+To filter out noise from heavy log streams without indexing raw text contents, append a case-sensitive substring filter expression utilizing the `|=` operator:
 
 ```logql
 {job="varlogs"} |= "error"
 ```
 
-`|=` is a case-sensitive filter. Loki does not index the word `error`. It selects the `varlogs` streams, then scans them.
-
+Loki streams the initial chunk filtered by the `varlogs` index label, then executes high-velocity text scanning over the matching results in real time.
 :::
 
-Container logs use the `containers` job. The `container` label is the container name, without the leading slash:
+To audit container-specific logs discovered via Promtail's engine socket wrapper, spin up a test container and run a LogQL streams query targeting the container metadata label:
 
 ```bash
 docker run --name log-demo alpine echo "error: sample application failure"
@@ -173,8 +185,14 @@ docker run --name log-demo alpine echo "error: sample application failure"
 {job="containers", container="log-demo"} |= "error"
 ```
 
-Remove the sample container when you are finished with it:
+Clean up the transient evaluation footprint when finalized:
 
 ```bash
 docker rm log-demo
 ```
+
+---
+
+**Official References & Documentation Standards:**
+* [Grafana Loki Installation Architectures](https://grafana.com)
+* [Promtail Configuration Blocks Reference](https://grafana.com)
