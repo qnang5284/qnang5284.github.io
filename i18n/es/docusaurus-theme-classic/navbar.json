@@ -26,5 +26,13 @@
   "item.label.Scribenode API Reference": {
     "message": "Referencia de API de Scribenode",
     "description": "Navbar item with label Scribenode API Reference"
+  },
+  "item.label.Documentation": {
+    "message": "Documentación",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Grafana Loki": {
+    "message": "Grafana Loki",
+    "description": "Navbar item with label Grafana Loki"
   }
 }

@@ -59,6 +59,14 @@
     "message": "Guía rápida para ejecutar un clúster local de Camunda 8 con Docker Compose.",
     "description": "Portfolio document summary"
   },
+  "homepage.doc.grafana.title": {
+    "message": "Grafana Loki",
+    "description": "Portfolio document title"
+  },
+  "homepage.doc.grafana.summary": {
+    "message": "Guía rápida para agregar y consultar logs locales con Grafana Loki y Promtail.",
+    "description": "Portfolio document summary"
+  },
   "homepage.metaTitle": {
     "message": "Portfolio de redacción técnica",
     "description": "The homepage HTML title"

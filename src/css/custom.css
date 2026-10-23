@@ -57,6 +57,39 @@
   font-weight: 500;
 }
 
+.navbar-docs-toggle {
+  border: 1px solid var(--portfolio-border);
+  padding: 0.28rem 0.7rem;
+  line-height: 1.4;
+}
+
+.navbar-docs-toggle:hover,
+.dropdown--show > .navbar-docs-toggle {
+  border-color: var(--ifm-color-primary);
+  background: transparent;
+}
+
+.navbar .dropdown__menu {
+  min-width: 15rem;
+  padding: 0.35rem;
+  border: 1px solid var(--portfolio-border);
+  background: var(--portfolio-surface);
+  box-shadow: none;
+}
+
+.navbar .dropdown__link {
+  border-radius: 2px;
+  padding: 0.45rem 0.65rem;
+  color: var(--portfolio-ink);
+  font-weight: 500;
+}
+
+.navbar .dropdown__link:hover,
+.navbar .dropdown__link--active {
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+  color: var(--portfolio-ink);
+}
+
 .footer--dark {
   background-color: var(--ifm-footer-background-color);
 }
