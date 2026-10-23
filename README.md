@@ -33,11 +33,14 @@ The documentation directory is partitioned into high-impact, realistic developer
 1. **Camunda 8 Setup & Orchestration (Latest Release: v8.10)**
    * A localized developer quickstart comparing lightweight `C8Run` architectures with heavy multi-component `Docker Compose` environments.
    * Features dynamic system-agnostic tabs (`POSIX` vs `Windows`), dependency isolation management, and critical warnings regarding local persistence storage.
-2. **Scribenode API Reference**
+2. **Grafana Loki Log Aggregation**
+   * A production-grade walkthrough detailing how to provision localized log aggregation topologies utilizing Docker Compose, Loki, and Promtail.
+   * Outlines strategic network mapping to mitigate loopback ingress socket collisions and introduces a critical, real-time product deprecation alert tracking upstream roadmaps.
+3. **Scribenode API Reference**
    * A robust reference manual detailing runtime parameters, schema structures, and JSON mapping mechanics for dialogue graph engines.
-3. **Minis Vault**
+4. **Minis Vault**
    * A clean API endpoint reference schema tailored for tracking physical inventories and structured data payloads.
-4. **The Homebrewery User Guide**
+5. **The Homebrewery User Guide**
    * An end-user technical manual mapping out formatting configurations, design components, and custom markdown semantics.
 
 ---
@@ -64,7 +67,7 @@ To replicate the development server and audit the localized compilation output o
 
 ## 👤 Contact & Sync
 
-* **GitHub Repository:** [https://github.com](https://github.com/qnang5284)
+* **GitHub Repository:** [https://github.com/qnang5284](https://github.com/qnang5284)
 * **LinkedIn Profile:** [Javier García-Miranda](https://www.linkedin.com/in/javier-garc%C3%ADa-miranda-a5430a1ab/)
 
 *Copyright © 2026 Javier García-Miranda. Built under the Docs-as-Code manifesto.*
