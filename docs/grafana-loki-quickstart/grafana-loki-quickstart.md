@@ -9,6 +9,15 @@ import TabItem from '@theme/TabItem';
 
 This quickstart guides you through deploying Grafana Loki, Promtail, and Grafana utilizing Docker Compose, establishing an automated pipeline to ship and query localized infrastructure logs.
 
+:::danger[CRITICAL PRODUCT DEPRECATION NOTICE]
+
+As of March 2, 2026, Grafana Labs has officially designated the Promtail agent as End of Life (EOL). Commercial support has fully terminated, and no future maintenance updates will be provided. All active feature development has transitioned entirely to **Grafana Alloy**. 
+
+If you are maintaining production instances or spinning up new environments, Grafana strongly recommends migrating from Promtail to Alloy. This quickstart retains Promtail purely for legacy local evaluation workflows; do not mirror this topology in modern infrastructures.
+
+:::
+
+
 ---
 
 ## 1. Core Concepts
