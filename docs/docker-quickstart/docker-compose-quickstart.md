@@ -1,7 +1,7 @@
 ---
-
-## title: Docker Compose Quickstart
+title: Docker Compose Quickstart
 sidebar_label: Docker Compose
+---
 
 # Docker Compose
 
