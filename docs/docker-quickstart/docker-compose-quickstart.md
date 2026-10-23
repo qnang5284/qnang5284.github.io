@@ -1,17 +1,42 @@
 ---
-title: Docker Compose Quickstart
+
+## title: Docker Compose Quickstart
 sidebar_label: Docker Compose
----
 
 # Docker Compose
 
 You need Docker 20.10.16 or later and Compose 2.24.0 or later. Check with
+
 ```bash
 docker compose version
 ```
+
 :::info[Beware the missing dashes]
 
 and use that command rather than `docker-compose`. You might need to upgrade Docker Desktop or the Docker Engine Compose plugin. 
+
+:::
+
+## Core Architecture: Component Topology
+
+Before orchestrating your local runtime, it is critical to understand the infrastructure footprint of each distribution. The following matrix maps the active microservices and database engines provisioned inside the Docker topology:
+
+| Core Component | Lightweight Topology (C8Run / Dev) | Heavyweight Topology (Full Compose Stack) | Primary Function & Operational Protocol |
+| :--- | :---: | :---: | :--- |
+| **Zeebe Engine** | 🟢 Active | 🟢 Active | Core workflow engine handling state transitions and BPMN execution via gRPC. |
+| **Elasticsearch** | 🟢 Active | 🟢 Active | Datastore persistence layer archiving all historical export state logs. |
+| **Camunda Operate** | 🟢 Active | 🟢 Active | Operational web dashboard for live process monitoring and incident troubleshooting. |
+| **Camunda Tasklist** | ❌ Omitted | 🟢 Active | User-facing task assignment ingress routing manual user actions. |
+| **Connectors Inbound** | ❌ Omitted | 🟢 Active | Out-of-the-box integration runtime executing polling and webhook tasks. |
+| **Connectors Outbound** | ❌ Omitted | 🟢 Active | Integration engine triggered by active workflow milestones to fetch external APIs. |
+| **Identity / Keycloak** | ❌ Omitted | 🟢 Active | Centralized Identity Access Management (IAM) handling OAuth2 authentication. |
+| **Web Modeler** | ❌ Omitted | 🟢 Optional | Enterprise visual canvas for collaborative process blueprint design. |
+
+:::warning[WATCH YOUR RESOURCES]
+
+  
+The **Heavyweight Full Stack** requires a minimum allocation of **16GB RAM** dedicated strictly to the Docker daemon. For local development environments with hardware overhead limitations, deploying the **Lightweight C8Run** instance is strictly recommended to mitigate kernel page thrashing.
+
 
 :::
 

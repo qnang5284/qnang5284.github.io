@@ -20,3 +20,16 @@ Two short guides continue from here:
 Do not run both at the same time. They listen on the same ports, starting with `8080`.
 
 :::
+```mermaid
+graph TD
+    A[Client Application / Workflow] -->|1. Grpc Requests| B(Zeebe Engine)
+    B -->|2. Export State Logs| C(Elasticsearch Database)
+    D(Camunda Operate / Tasklist) -->|3. Query Operational Data| C
+```
+
+
+:::info[How does this work]
+
+See the conceptual map above to grasp a more visual approach to what all these systems interconnect and interact with each other.
+
+:::
