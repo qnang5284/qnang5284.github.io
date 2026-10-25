@@ -36,8 +36,10 @@ graph TD
 
 
 
-:::info[Press 'SELECT' to see the map]
+:::info[Press Ctrl+M to see the map]
 
-Review the conceptual map above to understand how infrastructure components interact with each other.
+Review the conceptual map above to understand how infrastructure components interact with each other. 
+
+Seriously, try it. 
 
 :::

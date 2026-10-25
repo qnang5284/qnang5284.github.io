@@ -581,6 +581,11 @@ body {
   background: transparent;
 }
 
+.docusaurus-mermaid-container .labelBkg,
+.docusaurus-mermaid-container .edgeLabel {
+  background-color: #fff8e4 !important;
+}
+
 .docusaurus-mermaid-container .nodeLabel,
 .docusaurus-mermaid-container .nodeLabel p,
 .docusaurus-mermaid-container .edgeLabel,
