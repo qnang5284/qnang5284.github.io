@@ -104,6 +104,10 @@ const config: Config = {
               label: 'Grafana Loki',
             },
             {
+              to: '/docs/case-study',
+              label: 'Case Study',
+            },
+            {
               to: '/docs/homebrewery-user-guide-v2',
               label: 'Homebrewery User Guide',
             },
@@ -146,6 +150,10 @@ const config: Config = {
             {
               label: 'Grafana Loki',
               to: '/docs/grafana-loki-quickstart',
+            },
+            {
+              label: 'Case Study',
+              to: '/docs/case-study',
             },
             {
               label: 'Homebrewery User Guide',

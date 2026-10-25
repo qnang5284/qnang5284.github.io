@@ -74,6 +74,23 @@ const portfolioDocs: PortfolioDoc[] = [
     ),
   },
   {
+    href: '/docs/case-study',
+    title: (
+      <Translate
+        id="homepage.doc.casestudy.title"
+        description="Portfolio document title">
+        Case Study
+      </Translate>
+    ),
+    summary: (
+      <Translate
+        id="homepage.doc.casestudy.summary"
+        description="Portfolio document summary">
+        Case study of a Camunda 8 Onboarding setup and a Loki Flow Architecture.
+      </Translate>
+    ),
+  },
+  {
     href: '/docs/homebrewery-user-guide-v2',
     title: (
       <Translate
