@@ -418,20 +418,38 @@ body {
 }
 
 .theme-admonition {
-  overflow: hidden;
-  border: 3px solid var(--comic-frame) !important;
+  --burst: #f6c431;
+  overflow: visible;
+  margin: 1.8rem 0.55rem 1.55rem 0;
+  border: 4px solid var(--comic-frame) !important;
   border-radius: 0 !important;
-  background: var(--comic-panel);
-  box-shadow: 3px 3px 0 var(--comic-frame);
+  background-color: var(--comic-panel);
+  background-image: var(--comic-panel-dots);
+  background-size: 5px 5px;
+  box-shadow: 7px 7px 0 var(--burst);
   color: var(--comic-ink);
-  padding: 0;
+  padding: 0.15rem 0 0;
 }
 
 .theme-admonition [class*='admonitionHeading'] {
-  margin: 0;
-  padding: 0.4rem 0.75rem;
-  background: var(--comic-yellow);
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: calc(100% - 1.4rem);
+  margin: -1.05rem 0 0.65rem 0.8rem;
+  padding: 0.32rem 0.8rem 0.22rem;
+  border: 3px solid #1a120c;
+  background: var(--burst);
+  box-shadow: 4px 4px 0 #1a120c;
   color: #1a120c;
+  font-family: var(--comic-display);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
 }
 
 .theme-admonition [class*='admonitionIcon'] svg {
@@ -439,28 +457,34 @@ body {
 }
 
 .theme-admonition [class*='admonitionContent'] {
-  padding: 0.75rem 0.9rem 0.9rem;
+  padding: 0.15rem 1rem 0.95rem;
+  font-family: var(--comic-lettering);
+  font-size: 0.95rem;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 1.55;
+  text-transform: none;
 }
 
 .theme-admonition-note {
-  border-left: 8px solid #3ec6e8 !important;
+  --burst: #3ec6e8;
 }
 
 .theme-admonition-tip {
-  border-left: 8px solid #7dce4a !important;
+  --burst: #7dce4a;
 }
 
 .theme-admonition-info {
-  border-left: 8px solid #2f6fe0 !important;
+  --burst: #49b7ef;
 }
 
 .theme-admonition-warning,
 .theme-admonition-caution {
-  border-left: 8px solid #f5a027 !important;
+  --burst: #f5a027;
 }
 
 .theme-admonition-danger {
-  border-left: 8px solid var(--comic-red) !important;
+  --burst: #e23d3d;
 }
 
 .breadcrumbs__link {
@@ -495,6 +519,21 @@ body {
   text-transform: uppercase;
 }
 
+.theme-doc-toc-mobile {
+  border: 3px solid #1a120c;
+  color: #1a120c;
+}
+
+.theme-doc-toc-mobile button,
+.theme-doc-toc-mobile .table-of-contents__link,
+.theme-doc-toc-mobile .table-of-contents__link:hover {
+  color: #1a120c;
+}
+
+.theme-doc-toc-mobile button::after {
+  filter: none;
+}
+
 .theme-doc-toc-desktop {
   border-left: 3px solid var(--comic-frame);
 }
@@ -522,6 +561,44 @@ body {
   border-radius: 0;
   background: var(--comic-panel);
   box-shadow: 4px 4px 0 var(--comic-frame);
+}
+
+.docusaurus-mermaid-container {
+  margin: 1.35rem 0.45rem 1.6rem 0;
+  padding: 0.9rem 0.55rem 0.7rem;
+  background-color: #fff8e4;
+  background-image: radial-gradient(rgba(26, 18, 12, 0.14) 0.75px, transparent 0.85px);
+  background-size: 4px 4px;
+  border: 4px solid #1a120c;
+  box-shadow: 7px 7px 0 #1a120c;
+}
+
+[data-theme='dark'] .docusaurus-mermaid-container {
+  box-shadow: 7px 7px 0 #f6c431;
+}
+
+.docusaurus-mermaid-container svg {
+  background: transparent;
+}
+
+.docusaurus-mermaid-container .nodeLabel,
+.docusaurus-mermaid-container .nodeLabel p,
+.docusaurus-mermaid-container .edgeLabel,
+.docusaurus-mermaid-container .edgeLabel span,
+.docusaurus-mermaid-container .edgeLabel p {
+  font-family: Nunito, 'Segoe UI', sans-serif !important;
+  color: #1a120c !important;
+}
+
+.docusaurus-mermaid-container .edgePath path,
+.docusaurus-mermaid-container .flowchart-link {
+  stroke: #1a120c !important;
+  stroke-width: 2.5px !important;
+}
+
+.docusaurus-mermaid-container marker path {
+  fill: #1a120c !important;
+  stroke: #1a120c !important;
 }
 
 .theme-back-to-top-button {

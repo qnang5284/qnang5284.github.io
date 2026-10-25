@@ -36,11 +36,11 @@ Promtail discovers local logs, labels them, and pushes batches into Loki. Grafan
     Promtail -->|"push :3100"| Loki["Grafana Loki"]
     Loki -->|"LogQL"| Grafana["Grafana"]
 
-    style Host fill:#334155,stroke:#94A3B8,stroke-width:1px,color:#F1F5F9
-    style Engine fill:#334155,stroke:#94A3B8,stroke-width:1px,color:#F1F5F9
-    style Promtail fill:#0F172A,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC
-    style Loki fill:#1E293B,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC
-    style Grafana fill:#1E293B,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC
+    style Host fill:#f6c431,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Engine fill:#f5a027,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Promtail fill:#3ec6e8,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Loki fill:#e23d3d,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Grafana fill:#7dce4a,stroke:#1a120c,stroke-width:3px,color:#1a120c
   `}
   narrow={`flowchart TB
     Host["Host logs<br/>/var/log/*log"] -->|"job: varlogs"| Promtail["Promtail<br/>discover and label"]
@@ -48,11 +48,11 @@ Promtail discovers local logs, labels them, and pushes batches into Loki. Grafan
     Promtail -->|"POST /loki/api/v1/push<br/>http://loki:3100"| Loki["Grafana Loki<br/>index labels, compress lines"]
     Loki -->|"LogQL<br/>http://loki:3100"| Grafana["Grafana<br/>dashboards"]
 
-    style Host fill:#334155,stroke:#94A3B8,stroke-width:1px,color:#F1F5F9
-    style Engine fill:#334155,stroke:#94A3B8,stroke-width:1px,color:#F1F5F9
-    style Promtail fill:#0F172A,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC
-    style Loki fill:#1E293B,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC
-    style Grafana fill:#1E293B,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC
+    style Host fill:#f6c431,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Engine fill:#f5a027,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Promtail fill:#3ec6e8,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Loki fill:#e23d3d,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Grafana fill:#7dce4a,stroke:#1a120c,stroke-width:3px,color:#1a120c
   `}
 />
 

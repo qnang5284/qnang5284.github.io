@@ -81,6 +81,38 @@ const config: Config = {
     colorMode: {
       respectPrefersColorScheme: true,
     },
+    mermaid: {
+      theme: {
+        light: 'base',
+        dark: 'base',
+      },
+      options: {
+        fontFamily: 'Nunito, "Segoe UI", sans-serif',
+        themeVariables: {
+          fontFamily: 'Nunito, "Segoe UI", sans-serif',
+          fontSize: '16px',
+          darkMode: false,
+          background: 'transparent',
+          primaryColor: '#f6c431',
+          primaryTextColor: '#1a120c',
+          primaryBorderColor: '#1a120c',
+          secondaryColor: '#3ec6e8',
+          secondaryTextColor: '#1a120c',
+          secondaryBorderColor: '#1a120c',
+          tertiaryColor: '#e23d3d',
+          tertiaryTextColor: '#1a120c',
+          tertiaryBorderColor: '#1a120c',
+          lineColor: '#1a120c',
+          textColor: '#1a120c',
+          mainBkg: '#f6c431',
+          nodeBorder: '#1a120c',
+          nodeTextColor: '#1a120c',
+          clusterBkg: '#fff3d4',
+          clusterBorder: '#1a120c',
+          edgeLabelBackground: '#fff8e4',
+        },
+      },
+    },
     navbar: {
       title: 'Javier García-Miranda',
       logo: {
@@ -189,7 +221,12 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
-  } satisfies Preset.ThemeConfig,
+  } satisfies Preset.ThemeConfig & {
+    mermaid: {
+      theme: {light: string; dark: string};
+      options: Record<string, unknown>;
+    };
+  },
 };
 
 export default config;

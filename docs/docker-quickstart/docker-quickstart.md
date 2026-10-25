@@ -28,11 +28,10 @@ graph TD
     B -->|2. Export State Logs| C(Elasticsearch Database)
     D(Camunda Operate / Tasklist) -->|3. Query Operational Data| C
 
-    %% Inyección manual de estilos de alto contraste %%
-    style A fill:#0F172A,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC
-    style B fill:#1E293B,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC
-    style D fill:#1E293B,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC
-    style C fill:#334155,stroke:#94A3B8,stroke-width:1px,color:#F1F5F9
+    style A fill:#f6c431,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style B fill:#3ec6e8,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style D fill:#7dce4a,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style C fill:#e23d3d,stroke:#1a120c,stroke-width:3px,color:#1a120c
 ```
 
 

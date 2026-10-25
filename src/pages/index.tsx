@@ -161,11 +161,6 @@ function HomepageHeader() {
             </Translate>
           </span>
           <span>
-            <Translate id="homepage.craft" description="Comic artist credit on the homepage">
-              American comic artist
-            </Translate>
-          </span>
-          <span>
             <Translate id="homepage.practice" description="Docs-as-Code credit on the homepage issue bar">
               Docs-as-Code
             </Translate>
