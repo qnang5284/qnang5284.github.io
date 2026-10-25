@@ -36,10 +36,12 @@ type PortfolioDoc = {
   href: string;
   title: ReactNode;
   summary: ReactNode;
+  ink: 'red' | 'cyan' | 'yellow' | 'green' | 'orange' | 'blue';
 };
 
 const portfolioDocs: PortfolioDoc[] = [
   {
+    ink: 'red',
     href: '/docs/docker-quickstart',
     title: (
       <Translate
@@ -57,6 +59,7 @@ const portfolioDocs: PortfolioDoc[] = [
     ),
   },
   {
+    ink: 'cyan',
     href: '/docs/grafana-loki-quickstart',
     title: (
       <Translate
@@ -74,6 +77,25 @@ const portfolioDocs: PortfolioDoc[] = [
     ),
   },
   {
+    ink: 'yellow',
+    href: '/docs/case-study',
+    title: (
+      <Translate
+        id="homepage.doc.casestudy.title"
+        description="Portfolio document title">
+        Case Study
+      </Translate>
+    ),
+    summary: (
+      <Translate
+        id="homepage.doc.casestudy.summary"
+        description="Portfolio document summary">
+        Case study of a Camunda 8 Onboarding setup and a Loki Flow Architecture.
+      </Translate>
+    ),
+  },
+  {
+    ink: 'green',
     href: '/docs/homebrewery-user-guide-v2',
     title: (
       <Translate
@@ -91,6 +113,7 @@ const portfolioDocs: PortfolioDoc[] = [
     ),
   },
   {
+    ink: 'orange',
     href: '/docs/minisvault-api-reference',
     title: (
       <Translate
@@ -108,6 +131,7 @@ const portfolioDocs: PortfolioDoc[] = [
     ),
   },
   {
+    ink: 'blue',
     href: '/docs/scribenode-api-reference',
     title: (
       <Translate
@@ -128,29 +152,54 @@ const portfolioDocs: PortfolioDoc[] = [
 
 function HomepageHeader() {
   return (
-    <header className={styles.masthead}>
-      <div className="container">
+    <header className={styles.splash}>
+      <div className={styles.splashInner}>
+        <div className={styles.issueBar}>
+          <span>
+            <Translate id="homepage.issue" description="Comic issue number on the homepage">
+              No. 01
+            </Translate>
+          </span>
+          <span>
+            <Translate id="homepage.practice" description="Docs-as-Code credit on the homepage issue bar">
+              Docs-as-Code
+            </Translate>
+          </span>
+        </div>
+        <div className={styles.splashBody}>
+        <div className={styles.heroCopy}>
         <p className={styles.kicker}>
           <Translate id="homepage.kicker" description="Role label above the homepage title">
             Technical Writer
           </Translate>
         </p>
         <Heading as="h1" className={styles.title}>
-          <Translate id="homepage.title" description="The homepage main title">
-            Javier García-Miranda
-          </Translate>
+          <span>
+            <Translate id="homepage.title.given" description="First line of the homepage name">
+              Javier García-
+            </Translate>
+          </span>
+          <span>
+            <Translate id="homepage.title.family" description="Second line of the homepage name">
+              Miranda
+            </Translate>
+          </span>
         </Heading>
-        <p className={styles.tagline}>
+        <p className={styles.caption}>
           <Translate id="homepage.tagline" description="The homepage subtitle">
             Technical Writing & Software Documentation Portfolio
           </Translate>
         </p>
-        <p className={styles.welcome}>
-          <Translate id="homepage.welcome" description="Short welcome on the homepage">
-            Welcome. I am a former software engineer and comic artist specializing
-            in Docs-as-Code methodologies.
-          </Translate>
-        </p>
+        </div>
+        <div className={styles.heroSide}>
+        <div className={styles.balloon}>
+          <p className={styles.welcome}>
+            <Translate id="homepage.welcome" description="Short welcome on the homepage">
+              Welcome. I am a former software engineer and comic artist specializing
+              in Docs-as-Code methodologies.
+            </Translate>
+          </p>
+        </div>
         <div className={styles.profiles}>
           <a
             className={styles.profile}
@@ -187,6 +236,8 @@ function HomepageHeader() {
             </span>
           </a>
         </div>
+        </div>
+        </div>
       </div>
     </header>
   );
@@ -195,23 +246,24 @@ function HomepageHeader() {
 function PortfolioDocs(): ReactNode {
   return (
     <section className={styles.portfolio}>
-      <div className="container">
-        <Heading as="h2" className={styles.sectionTitle}>
-          <Translate id="homepage.docs.heading" description="Heading for the document list">
-            Documentation
-          </Translate>
-        </Heading>
-        <ul className={styles.grid}>
-          {portfolioDocs.map((doc) => (
-            <li key={doc.href}>
-              <Link className={styles.card} to={doc.href}>
+      <Heading as="h2" className={styles.sectionTitle}>
+        <Translate id="homepage.docs.heading" description="Heading for the document list">
+          Documentation
+        </Translate>
+      </Heading>
+      <ul className={styles.grid}>
+        {portfolioDocs.map((doc, index) => (
+          <li key={doc.href}>
+            <Link className={styles.panel} data-ink={doc.ink} to={doc.href}>
+              <span className={styles.panelHead}>
+                <span className={styles.panelNo}>{String(index + 1).padStart(2, '0')}</span>
                 <Heading as="h3">{doc.title}</Heading>
-                <p>{doc.summary}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+              </span>
+              <p>{doc.summary}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -230,10 +282,12 @@ export default function Home(): ReactNode {
           'Portfolio of Javier García-Miranda, a former software engineer and comic artist specializing in Docs-as-Code methodologies.',
         description: 'The homepage meta description',
       })}>
-      <HomepageHeader />
-      <main>
-        <PortfolioDocs />
-      </main>
+      <div className={styles.page}>
+        <HomepageHeader />
+        <main>
+          <PortfolioDocs />
+        </main>
+      </div>
     </Layout>
   );
 }

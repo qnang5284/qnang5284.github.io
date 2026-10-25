@@ -6,6 +6,7 @@ sidebar_label: Grafana Loki
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ResponsiveMermaid from '@site/src/components/ResponsiveMermaid';
 
 This quickstart guides you through deploying Grafana Loki, Promtail, and Grafana utilizing Docker Compose, establishing an automated pipeline to ship and query localized infrastructure logs.
 
@@ -25,6 +26,35 @@ If you are maintaining production instances or spinning up new environments, Gra
 * **Grafana Loki:** A horizontally scalable, highly available, tenant-aware log aggregation engine. Unlike Elasticsearch, Loki only indexes metadata labels (such as `job` or `container`) and leaves the raw log lines compressed, drastically minimizing memory footprint and operational overhead.
 * **Promtail:** The native shipping agent. It discovers log targets, attaches matching metadata labels, and pushes micro-batches directly to the Loki cluster.
 * **Grafana:** The unified visualization layer. It executes LogQL queries against Loki data streams to build real-time analytical dashboards.
+
+Promtail discovers local logs, labels them, and pushes batches into Loki. Grafana then queries those streams with LogQL.
+
+<ResponsiveMermaid
+  wide={`flowchart LR
+    Host["Host logs"] -->|"job: varlogs"| Promtail["Promtail"]
+    Engine["Docker socket"] -->|"job: containers"| Promtail
+    Promtail -->|"push :3100"| Loki["Grafana Loki"]
+    Loki -->|"LogQL"| Grafana["Grafana"]
+
+    style Host fill:#f6c431,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Engine fill:#f5a027,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Promtail fill:#3ec6e8,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Loki fill:#e23d3d,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Grafana fill:#7dce4a,stroke:#1a120c,stroke-width:3px,color:#1a120c
+  `}
+  narrow={`flowchart TB
+    Host["Host logs<br/>/var/log/*log"] -->|"job: varlogs"| Promtail["Promtail<br/>discover and label"]
+    Engine["Docker containers<br/>engine socket"] -->|"job: containers<br/>container, stream"| Promtail
+    Promtail -->|"POST /loki/api/v1/push<br/>http://loki:3100"| Loki["Grafana Loki<br/>index labels, compress lines"]
+    Loki -->|"LogQL<br/>http://loki:3100"| Grafana["Grafana<br/>dashboards"]
+
+    style Host fill:#f6c431,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Engine fill:#f5a027,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Promtail fill:#3ec6e8,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Loki fill:#e23d3d,stroke:#1a120c,stroke-width:3px,color:#1a120c
+    style Grafana fill:#7dce4a,stroke:#1a120c,stroke-width:3px,color:#1a120c
+  `}
+/>
 
 :::info[Check your OS]
 

@@ -3,6 +3,14 @@
     "message": "Javier García-Miranda",
     "description": "The homepage main title"
   },
+  "homepage.title.given": {
+    "message": "Javier García-",
+    "description": "First line of the homepage name"
+  },
+  "homepage.title.family": {
+    "message": "Miranda",
+    "description": "Second line of the homepage name"
+  },
   "homepage.tagline": {
     "message": "Portfolio de redacción técnica y documentación de software",
     "description": "The homepage subtitle"
@@ -14,6 +22,30 @@
   "homepage.kicker": {
     "message": "Redactor técnico",
     "description": "Role label above the homepage title"
+  },
+  "homepage.issue": {
+    "message": "N.º 01",
+    "description": "Comic issue number on the homepage"
+  },
+  "homepage.craft": {
+    "message": "Artista de cómic americano",
+    "description": "Comic artist credit on the homepage"
+  },
+  "homepage.practice": {
+    "message": "Docs-as-Code",
+    "description": "Docs-as-Code credit on the homepage issue bar"
+  },
+  "homepage.panel.open": {
+    "message": "Abrir",
+    "description": "Label on a homepage document panel"
+  },
+  "homepage.doc.casestudy.title": {
+    "message": "Caso de estudio",
+    "description": "Portfolio document title"
+  },
+  "homepage.doc.casestudy.summary": {
+    "message": "Caso de estudio de una puesta en marcha de Camunda 8 Onboarding y una Loki Flow Architecture.",
+    "description": "Portfolio document summary"
   },
   "homepage.profile.github": {
     "message": "Repositorios de documentación",
