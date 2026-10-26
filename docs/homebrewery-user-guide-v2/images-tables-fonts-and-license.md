@@ -25,8 +25,6 @@ The basic snippet: Markdown image plus a curly-brace style list.
 - **URL** in `(...)` — a reachable link; a private or expired host shows a blank.
 - `{width:...}` — size. Use `px`, `cm`, or `%` (`width:100%` fills the column).
 
-
-
 #### Image Wrap Left / Image Wrap Right
 
 Same as Image, with wrap already set so body text flows beside the picture. Put the snippet **before** the paragraphs that should wrap. PNG files with transparent backgrounds wrap more cleanly than photos with a hard rectangle.
@@ -93,8 +91,6 @@ A single-column PHB table (character advancement, loot, a short encounter chart)
 | 300 | 2 | +2 |
 ```
 
-
-
 #### Wide Table
 
 Wraps the table in `{{wide}}` so it spans both columns. Use this for weapons lists, class-like charts with many columns, or anything that looks crushed in one column.
@@ -117,8 +113,6 @@ Two small tables side by side inside `{{column-count:2}}` (for example Typical D
 | Very hard | 25 |
 }}
 ```
-
-
 
 #### Class Tables
 
@@ -161,7 +155,6 @@ Each snippet wraps a short sample in `{{font-family:Name ... }}`. Replace “Dum
 {{font-family:MrEavesRemake Chapter 1}}
 ```
 
-
 | Snippet                                    | What it is for                                                        |
 | ------------------------------------------ | --------------------------------------------------------------------- |
 | **Book Insanity**                          | PHB body serif — long prose.                                          |
@@ -174,7 +167,6 @@ Each snippet wraps a short sample in `{{font-family:Name ... }}`. Replace “Dum
 | **Code Bold**, **Code Light**, **Courier** | Monospace / “computer” or cipher printouts.                           |
 | **Walter Turncoat**                        | Handwritten notes and graffiti.                                       |
 | **Davek**, **Rellanic**, **Iokharic**      | Dwarvish, Elvish, and Draconic scripts (same families as Rune Table). |
-
 
 If a line looks huge or tiny, you wrapped a whole paragraph by mistake—keep font snippets on the short phrase that needs the voice.
 

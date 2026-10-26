@@ -21,9 +21,15 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
+  onDuplicateRoutes: 'throw',
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+      onBrokenMarkdownImages: 'throw',
+    },
   },
   themes: ['@docusaurus/theme-mermaid'],
 
@@ -49,6 +55,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          onInlineTags: 'throw',
           exclude: [
             '**/_*.{js,jsx,ts,tsx,md,mdx}',
             '**/_*/**',
@@ -64,9 +71,9 @@ const config: Config = {
             xslt: true,
           },
           // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          onInlineTags: 'throw',
+          onInlineAuthors: 'throw',
+          onUntruncatedBlogPosts: 'throw',
         },
         theme: {
           customCss: './src/css/custom.css',

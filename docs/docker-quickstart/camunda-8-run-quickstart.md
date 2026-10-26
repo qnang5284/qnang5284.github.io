@@ -25,6 +25,7 @@ If you're on CLI, use:
 ```
 
 Or execute the helper script with:
+
 ```bash
 ./start.sh
 ```
@@ -56,7 +57,6 @@ Shut it down from the same directory:
   {label: 'Windows', value: 'windows'}
 ]}>
   <TabItem value="macos-linux">
-
 
 ```bash
 ./shutdown.sh

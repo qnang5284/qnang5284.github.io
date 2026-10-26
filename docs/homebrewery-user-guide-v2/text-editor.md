@@ -80,8 +80,6 @@ Type any label you want: `1`, `iv`, `A-3`. Homebrewery prints that text as the f
 {{pageNumber iv}}
 ```
 
-
-
 #### Auto-incrementing Page Number
 
 **Inserts:** `{{pageNumber,auto}}`
@@ -92,8 +90,6 @@ Homebrewery counts physical pages and paints the digit on the outer corner (odd 
 {{pageNumber,auto}}
 ```
 
-
-
 #### Variable Auto Page Number
 
 **Inserts:** `{{pageNumber $[HB_pageNumber]}}`
@@ -103,8 +99,6 @@ Homebrewery counts physical pages and paints the digit on the outer corner (odd 
 ```markdown
 {{pageNumber $[HB_pageNumber]}}
 ```
-
-
 
 #### Skip Page Number Increment this Page
 
@@ -117,8 +111,6 @@ Put this on covers, inside covers, and credits sheets. That page prints **withou
 
 # Saltmarsh Gazetteer
 ```
-
-
 
 #### Restart Numbering
 
@@ -170,8 +162,6 @@ Each colon is a small vertical gap. The snippet drops several at once so you can
 Two iron bars and a sleeping mastiff.
 ```
 
-
-
 ### 4.6 Horizontal Spacing
 
 **Menu:** Text Editor → **Horizontal Spacing**  
@@ -182,8 +172,6 @@ Use this between words, icons, or short phrases when you need a fixed gap that a
 ```markdown
 Name {{width:100px}} Signature _______________
 ```
-
-
 
 ### 4.7 Wide Block
 
@@ -258,8 +246,6 @@ The Homebrewery
 [Homebrewery.Naturalcrit.com](https://homebrewery.naturalcrit.com)
 }}
 ```
-
-
 
 ### 4.12 Table of Contents
 

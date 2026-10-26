@@ -113,8 +113,6 @@ Harbor Watch will ignore a bribe under 5 gp. They will not ignore a talking gull
 }}
 ```
 
-
-
 ### 5.6 Descriptive Text Box
 
 **Menu:** PHB → **Descriptive Text Box**  

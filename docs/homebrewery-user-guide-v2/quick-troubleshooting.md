@@ -5,7 +5,6 @@ sidebar_label: Quick troubleshooting
 
 # 9. Quick troubleshooting
 
-
 | What you see                                  | Likely cause                                                  | What to try                                                              |
 | --------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | Text hanging off the page                     | Overflow into a third CSS column, or a missing `\page`        | Add a page break; shorten the column; move a tall block                  |
@@ -16,6 +15,5 @@ sidebar_label: Quick troubleshooting
 | PDF missing backgrounds                       | Print dialog dropped background graphics                      | Turn **Background graphics** on, margins none, letter, 100%              |
 | PDF differs from HTML around `wide`           | Rare browser column bug, or `\column` directly above `{{wide` | Prefer Chrome; avoid a hard column break immediately before a wide block |
 | Contents page numbers disagree with the folio | ToC generated before skip/restart, or not regenerated         | Fix numbering snippets, then run **Table of Contents** again             |
-
 
 You are not expected to get the first page perfect. Adjust `\page` and `\column` the way you would nudge frames in a desktop publisher.

@@ -12,12 +12,11 @@ This quickstart guides you through deploying Grafana Loki, Promtail, and Grafana
 
 :::danger[CRITICAL PRODUCT DEPRECATION NOTICE]
 
-As of March 2, 2026, Grafana Labs has officially designated the Promtail agent as End of Life (EOL). Commercial support has fully terminated, and no future maintenance updates will be provided. All active feature development has transitioned entirely to **Grafana Alloy**. 
+As of March 2, 2026, Grafana Labs has officially designated the Promtail agent as End of Life (EOL). Commercial support has fully terminated, and no future maintenance updates will be provided. All active feature development has transitioned entirely to **Grafana Alloy**.
 
 If you are maintaining production instances or spinning up new environments, Grafana strongly recommends migrating from Promtail to Alloy. This quickstart retains Promtail purely for legacy local evaluation workflows; do not mirror this topology in modern infrastructures.
 
 :::
-
 
 ---
 
@@ -241,5 +240,6 @@ docker rm log-demo
 ---
 
 **Official References & Documentation Standards:**
+
 * [Install Loki](https://grafana.com/docs/loki/latest/setup/install/)
 * [Promtail Agent](https://grafana.com/docs/loki/latest/send-data/promtail/)

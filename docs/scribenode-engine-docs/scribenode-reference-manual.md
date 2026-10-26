@@ -18,6 +18,7 @@ DialogueEngine.open(Path script, SessionContext context)
 ```
 
 ### Initialization Workflow
+
 When this method is triggered, the engine executes the following lifecycle operations:
 
 1. **Parsing:** The engine reads the target JSON file utilizing UTF-8 encoding and parses it into a structural document object.
@@ -82,9 +83,9 @@ ScribeNode engines ingest custom data structures formatted in standard JSON. Bel
 | `meta.id` | **Yes** | String | Global unique identifier for this specific narrative script. |
 | `meta.start` | No | String | Target node ID to load upon initialization. Defaults to `nodes[0].id` if absent. |
 | `nodes[].id` | **Yes** | String | Contextual unique identifier for a dialogue node inside this file scope. |
-| `nodes[].speaker`| **Yes** | String | Speaker entity key, dynamically resolved via the system's `SessionContext`. |
+| `nodes[].speaker` | **Yes** | String | Speaker entity key, dynamically resolved via the system's `SessionContext`. |
 | `nodes[].text` | **Yes** | String | The actual text localized and displayed to the end-user environment. |
-| `nodes[].choices`| **Yes** | Array | List of choice objects. An empty array signifies a terminal node branch. |
+| `nodes[].choices` | **Yes** | Array | List of choice objects. An empty array signifies a terminal node branch. |
 | `choices[].id` | **Yes** | String | Stable parameter token passed back to execution via `session.choose()`. |
 | `choices[].text` | **Yes** | String | The UI visual selection label presented directly to the user interface. |
 | `choices[].routing.next` | **Yes** | String | The explicit node target ID to evaluate and transition to upon choice selection. |
@@ -100,8 +101,8 @@ Script analysis executes eagerly during the initialization phase (`DialogueEngin
 | `E_JSON_PARSE` | Fatal / Input | The source file stream does not comply with standard valid JSON criteria. |
 | `E_SCHEMA` | Structural | A required field (`speaker`, `text`, `routing`, `choices`, `id`) is missing or uses an invalid data type. |
 | `E_NODE_MISSING` | Logical | The `meta.start` parameter or a `routing.next` pointer references a node ID that does not exist in this scope. |
-| `E_NODE_DUPLICATE`| Conflict | Multiple node elements inside the `nodes[]` collection declare identical `id` values. |
-| `E_CHOICE_DUPLICATE`| Conflict | An individual dialogue node contains multiple branching elements sharing the same `id` value. |
+| `E_NODE_DUPLICATE` | Conflict | Multiple node elements inside the `nodes[]` collection declare identical `id` values. |
+| `E_CHOICE_DUPLICATE` | Conflict | An individual dialogue node contains multiple branching elements sharing the same `id` value. |
 | `E_EMPTY_SCRIPT` | Structure | The `nodes` node container is completely missing, uninstantiated, or empty. |
 
 > ℹ️ **Runtime Runtime Note:** While initial graph loading handles structural parsing, `session.choose()` can still yield an `E_NODE_MISSING` exception during active runtime operations if the hosting application mutates the loaded memory graph programmatically post-validation. Source files that fail structural schema checks will never enter active execution paths.

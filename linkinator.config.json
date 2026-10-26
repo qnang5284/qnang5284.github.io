@@ -1,0 +1,19 @@
+{
+  "recurse": true,
+  "verbosity": "error",
+  "concurrency": 8,
+  "timeout": 20000,
+  "retry": true,
+  "retryErrors": true,
+  "retryErrorsCount": 2,
+  "retryErrorsJitter": 1000,
+  "skip": [
+    "https?://localhost(?!:4173\\b)",
+    "https?://127\\.0\\.0\\.1(?!:4173\\b)",
+    "https?://([^/]*\\.)?example\\.com",
+    "https?://[^/]*\\.example\\b",
+    "https?://loki:"
+  ],
+  "urlRewriteSearch": "^https://qnang5284\\.github\\.io",
+  "urlRewriteReplace": "http://127.0.0.1:4173"
+}
