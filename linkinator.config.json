@@ -12,7 +12,8 @@
     "https?://127\\.0\\.0\\.1(?!:4173\\b)",
     "https?://([^/]*\\.)?example\\.com",
     "https?://[^/]*\\.example\\b",
-    "https?://loki:"
+    "https?://loki:",
+    "https?://(www\\.)?reddit\\.com"
   ],
   "urlRewriteSearch": "^https://qnang5284\\.github\\.io",
   "urlRewriteReplace": "http://127.0.0.1:4173"
