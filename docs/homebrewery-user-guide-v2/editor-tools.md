@@ -37,7 +37,7 @@ Formats the current editor with a standard layout (indentation and wrapping). On
 
 ### Brew Editor
 
-The **mug** tab. This is the Markdown source: story, snippets, `\page`, tables. Stay here for almost all writing. The left pane you have used since [Start a new document](./start-a-new-document.md) **is** the Brew Editor. Click it if you are, for instance, working on a snippet and wish to go back to the Markdown editor. 
+The **mug** tab. This is the Markdown source: story, snippets, `\page`, tables. Stay here for almost all writing. The left pane you have used since [Start a new document](./start-a-new-document.md) **is** the Brew Editor. Click it if you are, for instance, working on a snippet and wish to go back to the Markdown editor.
 
 ### Style Editor
 

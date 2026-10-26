@@ -8,9 +8,10 @@ Welcome to my production-grade engineering documentation repository. This site a
 
 ## 🚀 The Profile: The Hybrid Advantage
 
-I am a former **Software Engineer** and **Professional Comic Artist** specializing in high-fidelity **Docs-as-Code** methodologies. 
+I am a former **Software Engineer** and **Professional Comic Artist** specializing in high-fidelity **Docs-as-Code** methodologies.
 
 This unique cross-disciplinary background allows me to:
+
 * **Deconstruct Deep Tech:** Interface directly with core engineering teams, read codebase implementations, and translate complex software topologies (REST/gRPC APIs, microservices, containerization) into frictionless developer journeys.
 * **Architect Information Visually:** Design documentation layouts with rigorous visual pacing and clean scannability, drastically lowering cognitive load and accelerating developer time-to-value.
 
@@ -50,17 +51,23 @@ The documentation directory is partitioned into high-impact, realistic developer
 To replicate the development server and audit the localized compilation output on your workstation:
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com && cd qnang5284.github.io
    ```
+
 2. **Provision the environment dependencies:**
+
    ```bash
    npm install
    ```
+
 3. **Execute the hot-reloading runtime server:**
+
    ```bash
    npm run start
    ```
+
    *The live deployment instance will stabilize automatically at* `http://localhost:3000`
 
 ---

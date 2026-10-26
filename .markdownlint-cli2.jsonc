@@ -1,0 +1,31 @@
+{
+  "globs": ["**/*.{md,mdx}"],
+  "ignores": ["node_modules", "build", ".docusaurus"],
+  "frontMatter": "^---\\r?\\n[\\s\\S]*?\\r?\\n---\\r?\\n",
+  "config": {
+    "default": true,
+    // Prose does not wrap at 80 columns.
+    "MD013": false,
+    // MDX, admonitions, and embedded HTML are part of the docs.
+    "MD033": false,
+    // Front matter precedes the first heading.
+    "MD041": false,
+    // The same heading is reused across sections and sample brews.
+    "MD024": false,
+    // Homebrewery chapters and their samples skip levels on purpose.
+    "MD001": false,
+    "MD025": false,
+    // Numbered steps continue after code samples.
+    "MD029": false,
+    // Bold labels in the guides are not headings.
+    "MD036": false,
+    // Docusaurus truncate markers look like broken emphasis.
+    "MD037": false,
+    "MD003": {
+      "style": "atx"
+    },
+    "MD046": {
+      "style": "fenced"
+    }
+  }
+}

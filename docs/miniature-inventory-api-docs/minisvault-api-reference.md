@@ -12,12 +12,10 @@ sidebar_label: Minis Vault
 
 MinisVault API stores a collector's acrylic paints and miniatures. Every resource belongs to the authenticated user. This reference covers the two operations in the v1 contract:
 
-
 | Operation           | Method and path           |
 | ------------------- | ------------------------- |
 | List acrylic paints | `GET /api/v1/paints`      |
 | Add a miniature     | `POST /api/v1/miniatures` |
-
 
 ---
 
@@ -30,24 +28,18 @@ Authorization: Bearer <token>
 Accept: application/json
 ```
 
-
 | Claim   | Meaning                                                                                                            |
 | ------- | ------------------------------------------------------------------------------------------------------------------ |
 | `sub`   | User id. The API uses this value as `user_id` and never accepts an owner id from the request body.                 |
 | `scope` | Space-separated permissions. Read operations require `inventory:read`. Write operations require `inventory:write`. |
 | `exp`   | Expiry, as a Unix timestamp. Expired tokens are rejected.                                                          |
 
-
-
 | Status             | Condition                                                                      |
 | ------------------ | ------------------------------------------------------------------------------ |
 | `401 Unauthorized` | The header is missing, the token cannot be verified, or the token has expired. |
 | `403 Forbidden`    | The token is valid and the required scope is absent.                           |
 
-
 ---
-
-
 
 ## Conventions
 
@@ -60,8 +52,6 @@ Accept: application/json
 
 ---
 
-
-
 ## List acrylic paints
 
 Returns the authenticated user's acrylic paints. Results can be narrowed by brand.
@@ -70,21 +60,14 @@ Returns the authenticated user's acrylic paints. Results can be narrowed by bran
 GET /api/v1/paints
 ```
 
-
-
 ### Headers
-
 
 | Header          | Required | Value                                             |
 | --------------- | -------- | ------------------------------------------------- |
 | `Authorization` | Yes      | `Bearer <token>` with the `inventory:read` scope. |
 | `Accept`        | Yes      | `application/json`                                |
 
-
-
-
 ### Query parameters
-
 
 | Name    | Required | Type    | Description                                                                                                                                             |
 | ------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -92,7 +75,6 @@ GET /api/v1/paints
 | `type`  | No       | string  | Paint medium. This operation returns acrylic paints only. Any other value produces an empty `data` array and a `200` status.                            |
 | `page`  | No       | integer | Zero-based page index. Default: `0`.                                                                                                                    |
 | `size`  | No       | integer | Page size. Default: `20`. Maximum: `100`.                                                                                                               |
-
 
 The server always applies `user_id = <sub>` and `type = 'acrylic'`. When `brand` is present it also applies a case-insensitive match on `brand`.
 
@@ -108,8 +90,6 @@ Host: api.minisvault.example
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c3JfM2Y4YTEiLCJzY29wZSI6ImludmVudG9yeTpyZWFkIn0.signature
 Accept: application/json
 ```
-
-
 
 ### Response — `200 OK`
 
@@ -168,10 +148,7 @@ Accept: application/json
 }
 ```
 
-
-
 ### Response fields
-
 
 | Field                | Type    | Description                                                               |
 | -------------------- | ------- | ------------------------------------------------------------------------- |
@@ -193,21 +170,14 @@ Accept: application/json
 | `page.totalElements` | integer | Matching paints across all pages.                                         |
 | `page.totalPages`    | integer | Page count for the current filter.                                        |
 
-
-
-
 ### Errors
-
 
 | Status             | When                                           |
 | ------------------ | ---------------------------------------------- |
 | `401 Unauthorized` | The token is missing or invalid.               |
 | `403 Forbidden`    | The token is valid and lacks `inventory:read`. |
 
-
 ---
-
-
 
 ## Add a miniature
 
@@ -217,19 +187,13 @@ Creates a miniature for the authenticated user.
 POST /api/v1/miniatures
 ```
 
-
-
 ### Headers
-
 
 | Header          | Required | Value                                              |
 | --------------- | -------- | -------------------------------------------------- |
 | `Authorization` | Yes      | `Bearer <token>` with the `inventory:write` scope. |
 | `Content-Type`  | Yes      | `application/json`                                 |
 | `Accept`        | Yes      | `application/json`                                 |
-
-
-
 
 ### Request body
 
@@ -246,7 +210,6 @@ POST /api/v1/miniatures
 }
 ```
 
-
 | Field          | Required | Type    | Constraints                                              |
 | -------------- | -------- | ------- | -------------------------------------------------------- |
 | `name`         | Yes      | string  | 1–120 characters.                                        |
@@ -257,7 +220,6 @@ POST /api/v1/miniatures
 | `scale`        | No       | string  | Maximum 20 characters.                                   |
 | `quantity`     | No       | integer | Defaults to `1`. Minimum `1`.                            |
 | `notes`        | No       | string  | Maximum 500 characters.                                  |
-
 
 `user_id` is copied from the token's `sub` claim. A body that includes `id`, `ownerId`, `createdAt`, or `updatedAt` does not override the values the server generates.
 
@@ -282,8 +244,6 @@ Accept: application/json
 }
 ```
 
-
-
 ### Response — `201 Created`
 
 ```http
@@ -307,7 +267,6 @@ Location: /api/v1/miniatures/min_4ab91c
 }
 ```
 
-
 | Field       | Type   | Description                                                                             |
 | ----------- | ------ | --------------------------------------------------------------------------------------- |
 | `id`        | string | Miniature id assigned by the server.                                                    |
@@ -315,18 +274,15 @@ Location: /api/v1/miniatures/min_4ab91c
 | `createdAt` | string | Creation time, UTC. Maps to `miniatures.created_at`.                                    |
 | `updatedAt` | string | Last update time, UTC. Equal to `createdAt` on create. Maps to `miniatures.updated_at`. |
 
-
 The remaining fields echo the stored request values, including defaults.
 
 ### Errors
-
 
 | Status             | When                                                                                                |
 | ------------------ | --------------------------------------------------------------------------------------------------- |
 | `400 Bad Request`  | A required field is missing, `status` is not one of the allowed values, or `quantity` is below `1`. |
 | `401 Unauthorized` | The token is missing or invalid.                                                                    |
 | `403 Forbidden`    | The token is valid and lacks `inventory:write`.                                                     |
-
 
 A validation failure returns this body:
 
@@ -343,7 +299,6 @@ A validation failure returns this body:
 }
 ```
 
-
 | Field               | Type   | Description                                                         |
 | ------------------- | ------ | ------------------------------------------------------------------- |
 | `error`             | string | Machine-readable code. Validation failures use `validation_failed`. |
@@ -352,10 +307,7 @@ A validation failure returns this body:
 | `details[].field`   | string | JSON property that failed.                                          |
 | `details[].message` | string | Reason that field was rejected.                                     |
 
-
 ---
-
-
 
 ## Data model
 
@@ -370,8 +322,6 @@ CREATE TABLE users (
     created_at  TIMESTAMPTZ  NOT NULL DEFAULT now()
 );
 ```
-
-
 
 ### `paints`
 
@@ -399,7 +349,6 @@ CREATE TABLE paints (
 CREATE INDEX idx_paints_user_brand ON paints (user_id, brand);
 ```
 
-
 | Column                     | JSON field   | Notes                                       |
 | -------------------------- | ------------ | ------------------------------------------- |
 | `range_name`               | `range`      |                                             |
@@ -409,7 +358,6 @@ CREATE INDEX idx_paints_user_brand ON paints (user_id, brand);
 | `user_id`                  | —            | Filter only. Omitted from the paint object. |
 | `created_at`, `updated_at` | —            | Stored, omitted from the list payload.      |
 
-
 Filter applied by the handler:
 
 ```sql
@@ -417,8 +365,6 @@ WHERE user_id = :subject
   AND type = 'acrylic'
   AND lower(brand) = lower(:brand)  -- only when brand is supplied
 ```
-
-
 
 ### `miniatures`
 
@@ -443,12 +389,9 @@ CREATE TABLE miniatures (
 CREATE INDEX idx_miniatures_user_status ON miniatures (user_id, status);
 ```
 
-
 | Column        | JSON field   |
 | ------------- | ------------ |
 | `user_id`     | `ownerId`    |
 | `game_system` | `gameSystem` |
 | `created_at`  | `createdAt`  |
 | `updated_at`  | `updatedAt`  |
-
-

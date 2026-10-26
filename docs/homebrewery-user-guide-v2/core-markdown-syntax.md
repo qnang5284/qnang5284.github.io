@@ -39,8 +39,6 @@ In monster traits, Homebrewery convention is italic-bold on the trait name:
 ***Keen Smell.*** The hound has advantage on Wisdom (Perception) checks that rely on smell.
 ```
 
-
-
 ### Lists
 
 **Unordered**

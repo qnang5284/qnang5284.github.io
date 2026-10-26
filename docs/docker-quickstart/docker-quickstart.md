@@ -21,7 +21,6 @@ Do not run both at the same time. They listen on the same ports, starting with `
 
 :::
 
-
 ```mermaid
 graph TD
     A[Client Application / Workflow] -->|1. Grpc Requests| B(Zeebe Engine)
@@ -34,12 +33,10 @@ graph TD
     style C fill:#e23d3d,stroke:#1a120c,stroke-width:3px,color:#1a120c
 ```
 
-
-
 :::info[Press Ctrl+M to see the map]
 
-Review the conceptual map above to understand how infrastructure components interact with each other. 
+Review the conceptual map above to understand how infrastructure components interact with each other.
 
-Seriously, try it. 
+Seriously, try it.
 
 :::

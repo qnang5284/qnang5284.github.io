@@ -13,7 +13,7 @@ docker compose version
 
 :::info[Beware the missing dashes]
 
-and use that command rather than `docker-compose`. You might need to upgrade Docker Desktop or the Docker Engine Compose plugin. 
+and use that command rather than `docker-compose`. You might need to upgrade Docker Desktop or the Docker Engine Compose plugin.
 
 :::
 
@@ -34,9 +34,7 @@ Before orchestrating your local runtime, it is critical to understand the infras
 
 :::warning[WATCH YOUR RESOURCES]
 
-  
 The **Heavyweight Full Stack** requires a minimum allocation of **16GB RAM** dedicated strictly to the Docker daemon. For local development environments with hardware overhead limitations, deploying the **Lightweight C8Run** instance is strictly recommended to mitigate kernel page thrashing.
-
 
 :::
 

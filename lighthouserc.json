@@ -1,0 +1,25 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npm run serve -- --host 127.0.0.1 --port 4173",
+      "startServerReadyPattern": "Serving",
+      "url": [
+        "http://127.0.0.1:4173/",
+        "http://127.0.0.1:4173/docs/docker-quickstart",
+        "http://127.0.0.1:4173/es/"
+      ],
+      "numberOfRuns": 1,
+      "settings": {
+        "onlyCategories": ["accessibility"]
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:accessibility": ["error", {"minScore": 0.9}]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}
