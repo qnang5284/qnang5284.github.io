@@ -10,6 +10,8 @@
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
+    "check-links": "start-server-and-test \"npm run serve -- --host 127.0.0.1 --port 4173\" http://127.0.0.1:4173 \"npm run check-links:scan\"",
+    "check-links:scan": "node scripts/check-links.mjs",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc"
@@ -30,6 +32,8 @@
     "@docusaurus/tsconfig": "3.10.2",
     "@docusaurus/types": "3.10.2",
     "@types/react": "^19.0.0",
+    "linkinator": "^7.6.1",
+    "start-server-and-test": "^2.1.5",
     "typescript": "~6.0.2"
   },
   "browserslist": {
